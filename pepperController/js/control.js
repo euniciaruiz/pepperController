@@ -13,7 +13,7 @@ function connect(){
     self.session.service("ALTextToSpeech").done(function(tts){
       tts.say("Connected");
     });
-    // document.getElementById('connectionStatus').text = "Connected";
+    document.getElementById('connectionStatus').text = "Connected";
   }).on('disconnect', function(){
     alert("disconnected");
   });
