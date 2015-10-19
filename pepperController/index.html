@@ -8,11 +8,10 @@
     <script type="text/javascript" src="js/control.js"></script>
     <script type="text/javascript" src="libs/qimessaging/1.0/qimessaging.js"></script>
     <script type="text/javascript" src="libs/qimessaging/1.0/jquery.min.js"></script>
-    <script src="jquery-1.9.1.min.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/starter-template.css" rel="stylesheet">
 
     <title>Pepper Controller</title>
   </head>
@@ -21,9 +20,9 @@
       <div id="title">Pepper Controller</div>
       <form role="form">
         <div class="form-group">
-          <input type="text" class="form-control" id="usr" placeholder="Pepper IP Address">
+          <input type="text" class="form-control" id="usr" name="pepperIP" placeholder="Pepper IP Address">
         </div>
-        <div id="btnConnect"><button type="button" class="btn btn-default" id="connect">Connect</button></div>
+        <div id="btnConnect" onclick="connect()"><button type="button" class="btn btn-default" id="connect(document.getElementById('usr').value)">Connect</button></div>
   </form>
     <div id="connectionStatus">Status: &nbsp&nbsp Not Connected</div>
     </div>
