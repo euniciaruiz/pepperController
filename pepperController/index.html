@@ -16,16 +16,44 @@
     <title>Pepper Controller</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="connector">
       <div id="title">Pepper Controller</div>
       <form role="form">
         <div class="form-group">
           <input type="text" class="form-control" id="usr" name="pepperIP" placeholder="Pepper IP Address">
         </div>
-        <div id="btnConnect" onclick="connect()"><button type="button" class="btn btn-default" id="connect(document.getElementById('usr').value)">Connect</button></div>
+        <div id="btnConnect" onclick="connect(document.getElementById('usr').value)"><button type="button" class="btn btn-default" id="connect">Connect</button></div>
+
   </form>
-    <div id="connectionStatus">Status: &nbsp&nbsp Not Connected</div>
+
     </div>
+    <div id="connectionStatus">Status: &nbsp&nbsp Not Connected</div>
+    <div class="container" id="controller" style="display: none;">
+
+      <div id="title">Pepper Controller</div>
+
+      <form role="form">
+        <div class="form-group">
+          <input type="text" class="form-control" id="usr" name="sayText" placeholder="Say Text">
+        </div>
+        <div id="btnSend" onclick="say()"><button type="button" class="btn btn-default" id="send" >Send</button></div>
+      </form>
+
+      <div class="row" style="margin-top: 30px;">
+        <div class="col-xs-6" style="text-align:center;" onclick="standGesture()"><button type="button" class="btn btn-default" id="stand" >Stand</button></div>
+        <div class="col-xs-6" style="text-align:center;" onclick="handsUp()"><button type="button" class="btn btn-default" id="handsUp">Hands Up</button></div>
+      </div>
+
+      <div class="row"><div class="arrow-up center" id="arrow-up" onclick="move(0)"></div></div>
+
+      <div class="row">
+        <div class="col-xs-6"><div class="arrow-left right" id="arrow-left" onclick="move(1)"></div></div>
+        <div class="col-xs-6"><div class="arrow-right left" id="arrow-right" onclick="move(3)"></div></div>
+      </div>
+
+      <div class="row"><div class="arrow-down center" id="arrow-down" onclick="move(2)"></div></div>
+
+  </div>
     <script src="js/bootstrap.min.js"></script>
 
   </body>

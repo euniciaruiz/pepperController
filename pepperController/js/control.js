@@ -1,7 +1,8 @@
 var self = this;
 
-function connect(){
-  var pepperIP = document.getElementsByName("pepperIP")[0].value;
+function connect(pepperIP){
+  console.log("connecting to Pepper");
+  document.cookie = pepperIP;
 
   var setupIns_ = function(){
     self.session.service("ALTextToSpeech").done(function(ins){
@@ -24,14 +25,17 @@ function connect(){
       self.alRobotPosture = ins;
     });
   }
+
   self.session = new QiSession(pepperIP);
   self.session.socket().on('connect', function(){
     self.session.service("ALTextToSpeech").done(function(tts){
       tts.say("Connected");
     });
     setupIns_();
+    document.getElementById('connector').style.display = 'none';
+    document.getElementById('connectionStatus').innerHTML = 'Connected to: '+pepperIP;
+    document.getElementById('controller').style.display = 'inherit';
 
-    window.location = "controlPepper.html";
 
   }).on('disconnect', function(){
     alert("disconnected");
@@ -83,7 +87,9 @@ function move(to){
 }
 
 function standGesture(){
+console.log(document.cookie);
 console.log("stand function initiated");
+
   if(self.alMotion){
     console.log("if");
     self.alRobotPosture.goToPosture("Stand", 0.8);
@@ -92,7 +98,6 @@ console.log("stand function initiated");
 }
 
 function handsUp(){
-  connect();
   console.log("hands up initiated");
   if(self.alBehavior){
     console.log("if");
